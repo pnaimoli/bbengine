@@ -1,0 +1,26 @@
+<!-- vim: set noexpandtab: -->
+<responses>
+<bid value="2N">
+	<criteria>
+		<opening/>
+		<or>
+			<balanced/>
+			<shape>5,4,2,2</shape>
+			<shape>CD6,3,2,2</shape>
+		</or>
+		<hcp min="20" max="22"/>
+	</criteria>
+	<responses>
+		<bid value="3N" handoff="CONFI">
+			<criteria>
+				<or>
+					<shape>4,4,3,2</shape>
+					<shape>CD5,3,3,2</shape>
+					<shape>CD5,4,2,2</shape>
+				</or>
+				<hcp min="10"/>
+			</criteria>
+		</bid>
+	</responses>
+</bid>
+</responses>
