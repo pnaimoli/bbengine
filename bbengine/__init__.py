@@ -211,8 +211,6 @@ class CONFIHandOff(HandOff):
             self.state.all_pass()
             return
 
-
-
         # If so, begin bidding Qxxx+ suits up the line until we have found
         # a fit
         denied_four_cards = [[False, False, False, False], None,
@@ -250,7 +248,16 @@ class CONFIHandOff(HandOff):
                         self.state.all_pass()
                         return
 
+            # If opener actually has a 6 card minor, just bid it at the 6 level.
             current_hand = self.hands[self.state.next_to_bid]
+            if self.state.next_to_bid == opener:
+                for i, suit in enumerate(SUITS):
+                    if len(str.split(current_hand)[i]) >= 6:
+                        # For now, blanket raise to 6 level and end
+                        self.state.add_bid("6" + suit)
+                        self.state.all_pass()
+                        return
+
 
             # Check to see if we have a 4-4 fit with partner
             for i, b in enumerate(showed_four_cards[2 - self.state.next_to_bid]):
